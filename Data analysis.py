@@ -26,9 +26,12 @@ for file in historic_files:
 historic_data.head(5)
 
 """ 
-    Analisis de data historica
+                                    Analisis de data historica
 """
 
+"""
+    Analisis univariable
+"""
 
 #====================== Analisis de Cuadrantes =================
 
@@ -68,8 +71,6 @@ plt.xlabel("Mes")
 plt.title("Transito de flota por mes")
 
 # =================== Analisis por hora del dia ====================
-# Transformamos las horas a datetime
-historic_data["Hora"] = pd.to_datetime(historic_data["Hora"])
 
 # Transformamos las horas a datetime
 historic_data["Hora"] = pd.to_datetime(historic_data["Hora"])
@@ -95,9 +96,63 @@ plt.xlabel('Velocidad promedio')
 plt.ylabel('Frecuencia')
 plt.grid(axis='y', alpha=0.75)
 
+"""
+    Analisis Bivariable
+"""
 
+# Transformamos la velocidad a numero
+historic_data["Velocidad_Promedio"] = pd.to_numeric(historic_data["Velocidad_Promedio"])
+velocities = historic_data["Velocidad_Promedio"].values # Se obtienen velocidades en forma de array
 
+# ================== Analisis de velocidades con respecto a cuadrante ======
+# Transformamos id_cuadrante a numero
+vcd_df = historic_data[["Velocidad_Promedio", "id_Cuadrante"]]
+vcd_df["id_Cuadrante"] = pd.to_numeric(vcd_df["id_Cuadrante"])
 
+vcd_df.plot.scatter(x="id_Cuadrante", y="Velocidad_Promedio", s=0.5, figsize=(20,10), colormap="plasma")
+plt.title("Velocidad vs Cuadrante")
+plt.xlabel('Cuadrantes')
+plt.ylabel('Velocidad Promedio')
+plt.grid(axis='y', alpha=0.75)
 
+# ================== Analisis de velocidades con respecto a Comuna ===========
+# Obtenemos los datos de interes
+vcm_df = historic_data[["Velocidad_Promedio", "Nombre_Comuna"]]
 
+# Agrupamos por comuna, calculamos vlocidades medias y ploteamos
+vcm_df.groupby(["Nombre_Comuna"]).mean().plot.bar()
+plt.title("Velocidad vs Comuna")
+plt.ylabel('Velocidad Promedio')
+plt.grid(axis='y', alpha=0.75)
 
+# ================== Analisis de velocidades con respecto a Fecha ===========
+vf_df = historic_data[["Velocidad_Promedio", "Fecha"]]
+# Transformamos la fecha a datetime
+vf_df["Fecha"] = pd.to_datetime(vf_df["Fecha"])
+
+# Agregamos una columna mes para poder agrupar la data
+vf_df['mes'] = vf_df['Fecha'].dt.month
+
+# Agrupamos por mes, calculamos las medias y ploteamos
+vf_df.groupby("mes")["Velocidad_Promedio"].mean().plot.bar(figsize=(10, 5))
+plt.title("Velocidad Media por Mes")
+plt.xlabel('Mes')
+plt.ylabel('Velocidad Promedio')
+plt.grid(axis='y', alpha=0.75)
+
+# ================== Analisis de velocidades con respecto a Hora del dia ===========
+# Obtenemos la data de interes
+vh_df = historic_data[["Velocidad_Promedio", "Hora"]]
+
+# Transformamos las horas a datetime 
+vh_df["Hora"] = pd.to_datetime(vh_df["Hora"])
+
+# Agregamos la columna hora para podeer agrupar los datos
+vh_df["hora"] = vh_df["Hora"].dt.hour
+
+# Agrupamos por hora y ploteamos
+vh_df.groupby("hora")["Velocidad_Promedio"].mean().plot.bar(figsize=(15, 8))
+plt.title("Velocidad media por Hora")
+plt.xlabel('Hora')
+plt.ylabel('Velocidad Promedio')
+plt.grid(axis='y', alpha=0.75)
