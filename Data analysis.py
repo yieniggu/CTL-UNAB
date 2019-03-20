@@ -8,16 +8,16 @@ Created on Tue Mar 12 01:23:31 2019
 import pandas as pd
 import os, glob
 import matplotlib.pyplot as plt
-import numpy as np
 
+""" 
+                                    Analisis de data historica
+"""
 
-# Se obtienen los archivos con data historica y secuencial
+# Se obtienen los archivos con data historica
 historic_files = glob.glob(os.path.join(os.getcwd()+ '/historic data/01-20190312T042227Z-001/01/Datos GPS/Datos GPS 200x200 (2018)', "*.csv"))
-sequential_files = glob.glob(os.path.join(os.getcwd()+ '/02-20190312T042607Z-001/02/Datos GPS/Detalle GPS', "*.csv"))
 
 historic_data_headers = ["id_Arco", "id_Cuadrante", "Nombre_Comuna", "Fecha", "Hora", "Velocidad_Promedio", "N_puntos", "N_vehiculos"]
 historic_data = pd.DataFrame(columns=historic_data_headers)
-
 
 for file in historic_files:
     data = pd.read_csv(file, delimiter=';')
@@ -25,9 +25,6 @@ for file in historic_files:
 
 historic_data.head(5)
 
-""" 
-                                    Analisis de data historica
-"""
 
 """
     Analisis univariable
@@ -156,3 +153,12 @@ plt.title("Velocidad media por Hora")
 plt.xlabel('Hora')
 plt.ylabel('Velocidad Promedio')
 plt.grid(axis='y', alpha=0.75)
+
+"""
+        Analisis de data Secuencial
+"""
+
+# Se obtienen los archivos con data secuencial
+sequential_files = glob.glob(os.path.join(os.getcwd()+ '/02-20190312T042607Z-001/02/Datos GPS/Detalle GPS', "*.csv"))
+
+
