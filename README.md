@@ -14,8 +14,8 @@ Este repositorio esta pensado para contener el paso a paso en la creacion de un 
 
 ### Prediccion de velocidades:
 
-+ [Prediccion basica utilizando promedios historicos por cuadrante](https://github.com/yieniggu/CTL-UNAB/blob/master/predictions/Prediccion%20b%C3%A1sica%20utlizando%20promedios%20historicos%20por%20cuadrante.ipynb)
-+ ~~[Prediccion por medio de Redes Neuronales]()~~
++ ~~[Prediccion basica por medio de Redes Neuronales-Baseline]()~~
++ ~~[Prediccion utilizando frameworks espacio-temporales]()~~
 + ~~[Prediccion considerando variables de contingencia]()~~
 
 
