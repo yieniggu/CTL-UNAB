@@ -73,6 +73,9 @@ y_predict = Ann_Baseline.predict(X_test)
 from sklearn.metrics import mean_squared_error
 mse_test = mean_squared_error(y_test, y_predict)
 
+#  ========================================================================================================
+
+# Segunda configuracion 5 - 10 - 8 - 1 
 
 Ann_Baseline = build_classifier(5, 10, 8)
 history= Ann_Baseline.fit(X_train, y_train, epochs=100, verbose=2, batch_size=100, validation_split=0.1)
@@ -86,7 +89,7 @@ plt.ylabel("Mse")
 plt.yticks(np.arange(200, 900, 100))
 plt.xlabel('Epoch')
 plt.legend(['train', 'validation'], loc ='upper right')
-plt.savefig("Mse.png")
+plt.savefig("Mse2.png")
 plt.show()
 
 # Metrics evaluation
