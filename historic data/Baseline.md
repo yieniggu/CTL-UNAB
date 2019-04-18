@@ -29,3 +29,18 @@ El código de esta sección se puede encontrar [aqui](https://github.com/yienigg
 
 **Mse train: 255.82**;
 **Mse test: 253.6**
+
+### Segunda Configuración [5 - 10 - 8 - 1]
+El código de esta sección se puede encontrar [aqui](https://github.com/yieniggu/CTL-UNAB/blob/master/02-%20Baseline.py) (Lineas 78 - 100 del codigo)
+
+### Configuracion
++ Capas ocultas: 2; 10 y 8 unidades respectivamente.
++ Numero de epocas: 100
++ Numero de batches: 100
++ Tiempo medio por epoca: 37s
+
+#### Plot de mse
+![alt text](https://github.com/yieniggu/CTL-UNAB/blob/master/src/Baselines/Mse2.png "MSE configuracion 2")
+
+**Mse train: 255.76**;
+**Mse test: 253.73**
