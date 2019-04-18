@@ -9,8 +9,15 @@ Este repositorio esta pensado para contener el paso a paso en la creacion de un 
 
 ### Analisis de data Secuencial:
 
-+ [Analisis Univariable]()
-+ [Analisis Bivariable con respecto a velocidad]()
++ ~~[Analisis Univariable]()~~
++ ~~[Analisis Bivariable con respecto a velocidad]()~~
+
+### Prediccion de velocidades:
+
++ ~~[Prediccion basica por medio de Redes Neuronales-Baseline]()~~
++ ~~[Prediccion utilizando frameworks espacio-temporales]()~~
++ ~~[Prediccion considerando variables de contingencia]()~~
+
 
 
 **Trabajo en progreso**
