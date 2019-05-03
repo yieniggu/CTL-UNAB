@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Leemos la data desde csv
-cuad_data = pd.read_csv(os.getcwd() + "/historic data/cuad_data.csv", delimiter=";")
+cuad_data = pd.read_csv(os.getcwd() + "/historic data/cuad_data.csv", delimiter=";", ignore_index=True)
 
 # Ordenamos por cuadrante y fecha
 sorted_cuad_data = cuad_data.sort_values(by = ["id_Cuadrante", "Fecha"])
@@ -99,11 +99,61 @@ y_predict = Ann_Baseline.predict(X_test)
 from sklearn.metrics import mean_squared_error
 mse_test = mean_squared_error(y_test, y_predict)
 
+# =================================================================================================================
 
+# Red neuronal considerando hora y minuto del dia
+dataset = pd.read_csv(os.getcwd()+ "/historic data/cuad_data3.csv")
+
+# Definicion de las columnas a ocupar
+headers = ["id_Cuadrante", "week_day", "year_day", "year_week", "Hora2", "Minuto"]
+
+for i in range (1, 31):
+    headers.append("v(n-" + str(i) +")")
+
+# Obtenemos los valores de interes
+X = dataset[headers].values
+y = dataset[["Velocidad_Promedio"]].values
+
+# Holdout
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, 
+                                                    random_state=123 )
+
+# Normalizacion
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+
+Ann_Baseline = build_classifier(36, 19, 19)
+history= Ann_Baseline.fit(X_train, y_train, epochs=100, verbose=2, batch_size=100, validation_split=0.1)
+
+# Plot de mse
+plt.figure(figsize=(10, 8))
+plt.plot(history.history['mean_squared_error'])   #training
+plt.plot(history.history['val_mean_squared_error']) #validation
+plt.title('MSE')
+plt.ylabel("Mse")
+plt.yticks(np.arange(200, 900, 100))
+plt.xlabel('Epoch')
+plt.legend(['train', 'validation'], loc ='upper right')
+plt.savefig("Mse2.png")
+plt.show()
+    
+# Metrics evaluation
+mse_train = history.history["mean_squared_error"][-1]
+y_predict = Ann_Baseline.predict(X_test)
+
+from sklearn.metrics import mean_squared_error
+mse_test = mean_squared_error(y_test, y_predict)
+
+
+# Separando la data por temporalidad
+test_df = sorted_cuad_data[["id_Cuadrante", "year_day", "Hora2", "Minuto", "Velocidad_Promedio"]][:80]
 
 
 
 # Cross validation
 ANN_Baseline = KerasClassifier(build_classifier, batch_size=100, epochs=100, validation_split=0.1, verbose=2)
 errors =  cross_val_score(estimator = ANN_Baseline, X = X_train, y = y_train, cv=10, n_jobs=-1)
-
