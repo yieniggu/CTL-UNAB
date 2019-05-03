@@ -44,3 +44,12 @@ El código de esta sección se puede encontrar [aqui](https://github.com/yienigg
 
 **Mse train: 255.76**;
 **Mse test: 253.73**
+
+### Tercera Configuracion [36 - 19 - 19 - 1]
+
+### Configuracion
++ Capas ocultas: 2; 19 unidades cada una.
++ Numero de epocas: 500
++ Numero de batches: 100
++ Tiempo medio por epoca: 37s
+
