@@ -53,3 +53,9 @@ El código de esta sección se puede encontrar [aqui](https://github.com/yienigg
 + Numero de batches: 100
 + Tiempo medio por epoca: 37s
 
+#### Plote de mse
+![alt text](https://github.com/yieniggu/CTL-UNAB/blob/master/src/Baselines/Mse3.png)
+
+**Mse train: 265.96**;
+**Mse test: 265.18**
+
