@@ -69,3 +69,30 @@ def add_velocities(data):
     return values
 
 values = add_velocities(sorted_cuad_data)
+
+# Definicion de headers
+headers = []
+for i in range (1, 31):
+    headers.append("v(n-" + str(i) +")")
+
+# Guardamos
+values.to_csv(os.getcwd() + "/historic data/features.csv", index=False, header=headers)
+
+# Leemos 
+values = pd.read_csv(os.getcwd() + "/historic data/features.csv")
+values.head()
+values.tail()
+
+headers.append("Velocidad_Promedio")
+
+# Concatenacion de los features
+sorted_cuad_data2 = pd.concat([sorted_cuad_data, values], axis=1)
+sorted_cuad_data2.head()
+sorted_cuad_data2.tail()
+
+sorted_cuad_data2.to_csv(os.getcwd() + "/historic data/cuad_data3.csv", index=False)
+sorted_cuad_data3 = pd.read_csv(os.getcwd() + "/historic data/cuad_data3.csv")
+
+
+test = sorted_cuad_data[:80][headers]
+test2 = sorted_cuad_data3[:80][headers]
