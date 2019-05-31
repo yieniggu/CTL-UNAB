@@ -91,8 +91,7 @@ sorted_cuad_data2.head()
 sorted_cuad_data2.tail()
 
 sorted_cuad_data2.to_csv(os.getcwd() + "/historic data/cuad_data3.csv", index=False)
-sorted_cuad_data3 = pd.read_csv(os.getcwd() + "/historic data/cuad_data3.csv")
 
 
-test = sorted_cuad_data[:80][headers]
-test2 = sorted_cuad_data3[:80][headers]
+
+
