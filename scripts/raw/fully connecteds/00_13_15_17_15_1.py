@@ -54,7 +54,7 @@ ANN_Baseline.add(Dense(1, activation="linear"))
 # MSE como metrica de evaluacion de la red
 ANN_Baseline.compile(loss='mse', optimizer='adam', metrics=['mse', 'mae', coeff_determination])
     
-history = ANN_Baseline.fit(X_train, y_train, epochs=1200, verbose=2, batch_size=30, validation_split=0.1)
+history = ANN_Baseline.fit(X_train, y_train, epochs=500, verbose=2, batch_size=30, validation_split=0.1)
 
 layers = ANN_Baseline.layers
 weights1 = layers[0].get_weights()[0]
