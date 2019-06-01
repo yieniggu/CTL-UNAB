@@ -65,7 +65,7 @@ ANN_Baseline.layers[2].set_weights([l3_weights, l3_bias])
 # MSE como metrica de evaluacion de la red
 ANN_Baseline.compile(loss='mse', optimizer='adam', metrics=['mse', 'mae', coeff_determination])
     
-history = ANN_Baseline.fit(X_train, y_train, epochs=100, verbose=2, batch_size=30, validation_split=0.1)
+history = ANN_Baseline.fit(X_train, y_train, epochs=1200, verbose=2, batch_size=30, validation_split=0.1)
 
 layers = ANN_Baseline.layers
 weights1 = layers[0].get_weights()[0]
@@ -75,12 +75,12 @@ bias2 = layers[1].get_weights()[1]
 weights3 = layers[2].get_weights()[0]
 bias3 = layers[2].get_weights()[1]
 
-np.savetxt("weights1.csv", weights1, delimiter=",", fmt="%s")
-np.savetxt("bias1.csv", bias1, delimiter=",", fmt="%s")
-np.savetxt("weights2.csv", weights2, delimiter=",", fmt="%s")
-np.savetxt("bias2.csv", bias2, delimiter=",", fmt="%s")
-np.savetxt("weights3.csv", weights3, delimiter=",", fmt="%s")
-np.savetxt("bias3.csv", bias3, delimiter=",", fmt="%s")
+np.savetxt("weights/00_13_19_19_1/weights1.csv", weights1, delimiter=",", fmt="%s")
+np.savetxt("weights/00_13_19_19_1/bias1.csv", bias1, delimiter=",", fmt="%s")
+np.savetxt("weights/00_13_19_19_1/weights2.csv", weights2, delimiter=",", fmt="%s")
+np.savetxt("weights/00_13_19_19_1/bias2.csv", bias2, delimiter=",", fmt="%s")
+np.savetxt("weights/00_13_19_19_1/weights3.csv", weights3, delimiter=",", fmt="%s")
+np.savetxt("weights/00_13_19_19_1/bias3.csv", bias3, delimiter=",", fmt="%s")
 
 # Plot de mse
 plt.figure(figsize=(10, 8))
