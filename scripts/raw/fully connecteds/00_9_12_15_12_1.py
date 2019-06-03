@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jun  1 15:54:54 2019
-
-@author: Bastolo
-"""
-
-# -*- coding: utf-8 -*-
-"""
 Created on Fri May 31 17:48:22 2019
 
 @author: Bastolo
 """
-print("\nIniciando Script 00_13_19_19_1.py ...\n")
+print("\nIniciando Script 00_9_12_15_12_1.py ...\n")
 
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense
@@ -27,7 +20,7 @@ new_dataset = dataset.loc[(dataset["Hora2"] >= 6) & (dataset["Hora2"] <= 20)]
 headers = ["id_Cuadrante", "week_day", "year_day", "year_week", "Hora2", "Minuto"]
 
 # Ocupando las 7 mediciones
-for i in range (1, 3):
+for i in range (1, 4):
     headers.append("v(n-" + str(i) +")")
     
 # Obtenemos los valores de interes
