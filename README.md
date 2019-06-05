@@ -6,6 +6,7 @@ Este repositorio esta pensado para contener el paso a paso en la creacion de un 
 
 + [Analisis Univariable](https://github.com/yieniggu/CTL-UNAB/blob/master/notebooks/Analisis%20Univariable%20de%20la%20data%20Historica.ipynb)
 + [Analisis Bivariable con respecto a velocidad](https://github.com/yieniggu/CTL-UNAB/blob/master/notebooks/Analisis%20Bivariable%20con%20respecto%20a%20la%20velocidad%20de%20la%20data%20historica.ipynb)
++ [Analisis de porcentaje de data que falta](https://github.com/yieniggu/CTL-UNAB/blob/master/notebooks/An%C3%A1lisis%20del%20porcentaje%20de%20data%20que%20falta.ipynb)
 
 ### Analisis de data Secuencial:
 
