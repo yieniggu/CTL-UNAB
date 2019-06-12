@@ -47,4 +47,4 @@ dataset3.columns
 medias = dataset3.groupby(["id_Cuadrante", "year_day", "year_week","week_day", "Nombre_Comuna", "Hora2"])["Velocidad_Promedio"].mean()
 medias2 = pd.DataFrame(medias.reset_index())
 
-medias2.to_csv("temporal_cuad_data_h.csv")
+medias2.to_csv("temporal_cuad_data_h.csv", index=False)
