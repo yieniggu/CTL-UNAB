@@ -15,7 +15,7 @@ import pandas as pd
 import numpy as np
 
 # Leemos la data
-cuad_data = pd.read_csv("temporal_cuad_data_h.csv",  index_col=0)
+cuad_data = pd.read_csv("temporal_cuad_data_h.csv")
 
 cuad_data.head()
 

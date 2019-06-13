@@ -19,7 +19,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-dataset = pd.read_csv("temporal_cuad_data_h.csv", index_col=0)
+dataset = pd.read_csv("temporal_cuad_data_h.csv")
 
 dataset = dataset.loc[(dataset["Hora2"] >= 7) & (dataset["Hora2"] <= 18)]
 
@@ -59,26 +59,24 @@ ANN_Baseline.add(Dense(18, activation="relu"))
 ANN_Baseline.add(Dense(12, activation="relu"))
 ANN_Baseline.add(Dense(1, activation="linear"))
 
-"""
-l1_bias = np.loadtxt("weights/01_13_15_17_15_1/bias1.csv", delimiter=",")
-l1_weights = np.loadtxt("weights/01_13_15_17_15_1/weights1.csv", delimiter=",")
-l2_bias = np.loadtxt("weights/01_13_15_17_15_1/bias2.csv", delimiter=",")
-l2_weights = np.loadtxt("weights/01_13_15_17_15_1/weights2.csv", delimiter=",")
-l3_bias = np.loadtxt("weights/01_13_15_17_15_1/bias3.csv", delimiter=",")
-l3_weights = np.loadtxt("weights/01_13_15_17_15_1/weights3.csv", delimiter=",")
-l4_bias = np.loadtxt("weights/01_13_15_17_15_1/bias4.csv", delimiter=",").reshape(-1)
-l4_weights = np.loadtxt("weights/01_13_15_17_15_1/weights4.csv", delimiter=",").reshape(-1)
+l1_bias = np.loadtxt("weights/04_6_18_18_12_1/bias1.csv", delimiter=",")
+l1_weights = np.loadtxt("weights/04_6_18_18_12_1/weights1.csv", delimiter=",")
+l2_bias = np.loadtxt("weights/04_6_18_18_12_1/bias2.csv", delimiter=",")
+l2_weights = np.loadtxt("weights/04_6_18_18_12_1/weights2.csv", delimiter=",")
+l3_bias = np.loadtxt("weights/04_6_18_18_12_1/bias3.csv", delimiter=",")
+l3_weights = np.loadtxt("weights/04_6_18_18_12_1/weights3.csv", delimiter=",")
+l4_bias = np.loadtxt("weights/04_6_18_18_12_1/bias4.csv", delimiter=",").reshape(-1)
+l4_weights = np.loadtxt("weights/04_6_18_18_12_1/weights4.csv", delimiter=",").reshape(-1)
 
 ANN_Baseline.layers[0].set_weights([l1_weights, l1_bias])
 ANN_Baseline.layers[1].set_weights([l2_weights, l2_bias])
 ANN_Baseline.layers[2].set_weights([l3_weights, l3_bias])
 ANN_Baseline.layers[3].set_weights([l4_weights, l4_bias])
-"""
 
 # MSE como metrica de evaluacion de la red
 ANN_Baseline.compile(loss='mse', optimizer='adam', metrics=['mse', 'mae', coeff_determination])
     
-history = ANN_Baseline.fit(X_train, y_train, epochs=100, verbose=2, batch_size=30, validation_split=0.1)
+history = ANN_Baseline.fit(X_train, y_train, epochs=1000, verbose=2, batch_size=30, validation_split=0.1)
 
 layers = ANN_Baseline.layers
 weights1 = layers[0].get_weights()[0]
