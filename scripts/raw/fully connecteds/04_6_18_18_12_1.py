@@ -5,12 +5,6 @@ Created on Wed Jun 12 17:59:09 2019
 @author: Bastolo
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Fri May 31 17:48:22 2019
-
-@author: Bastolo
-"""
 print("\nIniciando Script 04_6_18_18_12_1.py ...\n")
 
 from tensorflow.python.keras.models import Sequential

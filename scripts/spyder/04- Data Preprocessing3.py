@@ -5,11 +5,6 @@ Created on Wed Jun 12 17:07:10 2019
 @author: Bastolo
 """
 
-"""
-Created on Sat Apr 20 01:13:30 2019
-
-@author: Bastolo
-"""
 
 import pandas as pd
 import numpy as np
